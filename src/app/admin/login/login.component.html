@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Sign In</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-sm-8">
+      <form #form="ngForm" (ngSubmit)="login(form)">
+        <div>
+
+          <div class="alert alert-danger" *ngIf="error">
+            Either username or password is invalid.
+          </div>
+
+          <div class="form-group">
+            <label for="email"> Email </label>
+            <input type="text"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  required
+                  minlength="3"                
+                  #emailVar=ngModel
+                  (change)="log(emailVar)">
+            <div class="alert alert-danger" *ngIf="emailVar.touched && emailVar.invalid">
+              <div *ngIf="emailVar.errors.required">
+                  Email address is required.
+              </div>
+              <div *ngIf="emailVar.errors.minlength">
+                Username should have minimum {{emailVar.errors.minlength.requiredLength}} characters.
+              </div>  
+              <!-- <div *ngIf="emailVar.errors.pattern">
+                Provided input is not matching the required pattern.
+              </div>          -->
+            </div>       
+          </div>
+          <div class="form-group">
+            <label for="pwd"> Password </label>
+            <input type="password"
+                  id="pwd"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="password">
+          </div>
+        </div>
+        <button class="btn btn-primary" 
+                type="submit"
+                [disabled]="!form.valid">Login</button>
+
+      </form>
+  </div>
+  </div>
+</div>

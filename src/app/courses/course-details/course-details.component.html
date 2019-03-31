@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>Course Details</h3>
+  </div>
+  <div class="panel-body" *ngIf="selectedCourse">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-3">Name: </div>
+          <div class="col-sm-9">{{selectedCourse.courseName}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Trainer: </div>
+          <div class="col-sm-9">{{selectedCourse.trainer}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Starting From : </div>
+          <div class="col-sm-9">{{selectedCourse.nextBatchDate}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Price: </div>
+          <div class="col-sm-9">{{selectedCourse.price}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Rating: </div>
+          <div class="col-sm-9">{{selectedCourse.starRating}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Details: </div>
+          <div class="col-sm-9">{{selectedCourse.description}}</div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <img [src]="selectedCourse?.imageUrl" class="img-circle img-repsonsive" width="200">
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <button class="btn btn-outline-secondary" (click)="onBack()">
+      <i class="fa fa-chevron-left"></i> Back 
+    </button>
+  </div>
+</div>

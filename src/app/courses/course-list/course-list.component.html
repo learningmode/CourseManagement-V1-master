@@ -41,7 +41,7 @@
                    [style.width.px]="imageWidth"
                    [style.height.px]="imageWidth" />
             </td>
-            <td>{{course.courseName}}</td>
+            <td [routerLink]="['/courses', course.courseId]">{{course.courseName}}</td>
             <td>{{course.courseCode}}</td>
             <td>{{course.nextBatchDate}}</td>
             <td>{{course.price | currency: "INR" : "symbol" : '4.2-2'}}</td>
