@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AngularFireDatabaseModule } from 'angularfire2/database'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
@@ -40,6 +42,7 @@ import { SignupComponent } from './admin/signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AngularFireDatabaseModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

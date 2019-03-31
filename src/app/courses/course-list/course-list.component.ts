@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICourse } from '../course';
 import { CourseService } from '../course.service';
-
+import { AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'course-list',
@@ -26,7 +26,7 @@ export class CourseListComponent implements OnInit {
     this.filteredCourses = this._listFilter ? this.performFilter() : this.courses;
   }
 
-  courses: ICourse[];  
+  courses;  
 
   constructor(private courseService: CourseService) { 
 
@@ -34,7 +34,8 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courseService.getCourses().subscribe(
+
+    this.courseService.getCoursesFromFireStore().subscribe(
       (response) =>{
         this.courses = response;
         this.filteredCourses = this.courses; 

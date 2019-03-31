@@ -23,4 +23,10 @@ export class FirebaseService {
 
     verify() { }
 
+
+    signup(email, password) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+    }
+
+
 }

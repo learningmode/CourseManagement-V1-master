@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { SpaceValidator } from './space.validator';
+import { FirebaseService } from '../../shared/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +11,9 @@ import { SpaceValidator } from './space.validator';
 })
 export class SignupComponent implements OnInit {
   form;
-  constructor(fb: FormBuilder) { 
+  error;
+  
+  constructor(fb: FormBuilder,private auth: FirebaseService, private route: Router) { 
     this.form = fb.group({
       account : fb.group({
         email: ['',
@@ -36,12 +40,25 @@ export class SignupComponent implements OnInit {
   }
 
   registration() {
-    console.log(this.form);
+    let val = this.form.value.account;
 
-    //Suppose we are getting error on registration.
+    this.auth.signup(val.email, val.password)
+        .then(
+          response => {
+            this.route.navigate(['/login'])
+          },
+          error => {
+            this.error = true;
+          }
+        );
 
-    this.form.setErrors({
-      invalidForm: true
-    })
   }
+
+  
+
+  
+
+
+
+
 }
